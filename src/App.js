@@ -1,11 +1,16 @@
 import './App.css';
-import React from 'react'
-import jarvis from './jarvis.mp3'
+import React ,{Component} from 'react'
+import NavBar from './components/NavBar'
+import NewItems from './components/NewsItems'
 
-export default function App() {
-  let play = new Audio({jarvis})
-  play.play()
-  return (
-    <div>Hello I am jarvis</div>
-  )
+export default class App extends Component {
+  render() {
+    document.body.style.backgroundColor='black'
+    return (
+      <>
+        <NavBar />
+        <NewItems />
+      </>
+    )
+  }
 }
