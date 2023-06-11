@@ -204,18 +204,18 @@ export default class News extends Component {
         this.state = {
             articles: this.articles,
             count: 0
-        }
-    }
+        }}
     render() {
         return (
     <>
-        <div className="container row" style={{ width: "80%", margin: "2rem auto auto auto" }}>
-            {this.articles.map((e) => {
-                return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
-                    <NewItems title={e.title} description={e.description} urlToImage={e.urlToImage} newsUrl={e.url} />
-                </div>
-            })}
-        </div>
+    <div className="container row" style={{ width: "80%", margin: "2rem auto auto auto" }}>
+        {this.articles.map((e) => {
+            // console.log(`${e.title.substring(0,88)}`);
+            return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
+                <NewItems title={e.title.substring(0,70)} description={e.description.substring(0,140)} urlToImage={e.urlToImage} newsUrl={e.url} />
+            </div>
+        })}
+    </div>
     </>
         )
     }
