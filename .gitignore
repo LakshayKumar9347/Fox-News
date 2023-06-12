@@ -1,5 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+https://newsapi.org/v2/top-headlines?country=us&apiKey=dd30967d1d854b799d75da5a94a311c2
 # dependencies
 /node_modules
 /.pnp
