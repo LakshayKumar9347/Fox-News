@@ -13,7 +13,7 @@ export default class News extends Component {
     }
     // ! Code to fetch Api from server
     async componentDidMount() {
-        let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=dd30967d1d854b799d75da5a94a311c2&q=news'
+        let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=dd30967d1d854b799d75da5a94a311c2'
         let data = await fetch(url)
         let parsedData = await data.json()
         console.log(parsedData);
