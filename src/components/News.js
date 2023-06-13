@@ -7,7 +7,7 @@ export default class News extends Component {
         this.state = {
             articles: [],
             loading: false,
-            page:1
+            page: 1
         }
     }
     //todo  Code to fetch Api from server
@@ -17,25 +17,29 @@ export default class News extends Component {
             let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${pageToView}&pagesize=11`
             let data = await fetch(url)
             let parsedData = await data.json()
+            let totalResults = await parsedData.totalResults
+            // console.log("This is the Total Number of Results",totalResults);
             this.setState({ articles: parsedData.articles })
-            return parsedData
+            return [parsedData, totalResults]
         } catch (error) {
             return new Error("Unable To fetch data", Error)
-        }}
+        }
+    }
 
     async componentDidMount() {
-       let parsedDataFromApi = await this.fetchDataFromApi()
-        let totalResults = await parsedDataFromApi.totalResults
-        console.log(totalResults);
-        // console.log(totalResults);
-        console.log("Running ComponentDIDMount❤️")}
-
-    async handlePrevClick () {
-        console.log('Clicking on Previous Button');
+        this.fetchDataFromApi()
+        console.log("Running ComponentDIDMount❤️")
     }
-  async  handleNextClick() {
-        console.log('Clicking on next Button');
+    //todo 1st onclick event trigger to change the url parameter to page =2
+    //todo how to achieve this ?
+    //todo checks =>{totalresults/11}
+    async handlePrevClick() {
+        console.log('Clicking on Previous Button');
 
+    }
+     handleNextClick=async()=> {
+        console.log('Clicking on Next Button');
+        this.setState({ page: this.state.page + 1 })
     }
     render() {
         return (
