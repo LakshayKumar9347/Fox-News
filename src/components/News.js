@@ -8,7 +8,7 @@ export default class News extends Component {
             articles: [],
             loading: false,
             page: 1,
-            count: 0
+            totalResults: 1
         }
     }
     //todo  Code to fetch Api from server
@@ -18,19 +18,21 @@ export default class News extends Component {
             let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${value}&pagesize=11`
             let data = await fetch(url)
             let parsedData = await data.json()
-            // let totalResults = await parsedData.totalResults  // console.log("This is the Total Number of Results",totalResults);
             this.setState({ articles: parsedData.articles })
+            this.setState({totalResults:parsedData.totalResults })
         } catch (error) {
             return new Error("Unable To fetch data", Error)
         }
     }
-
-    async componentDidMount() {
+    componentDidMount =() => {
         this.fetchDataFromApi()
-        console.log("Running ComponentDIDMount❤️")
+        let logArticles = this.state.totalResults
+        // console.log("Running ComponentDIDMount❤️")
+        console.log(logArticles);
+
     }
     //todo 1st onclick event trigger to change the url parameter to page =2 //todo how to achieve this ? //todo checks =>{totalresults/11}    
-    async handlePrevClick() {
+    handlePrevClick = () => {
         console.log('Clicking on Previous Button');
         this.setState({ page: this.state.page - 1 })
         this.fetchDataFromApi()
@@ -59,8 +61,8 @@ export default class News extends Component {
                         </div>
                     })}
                     <div className="container my-5 d-flex justify-content-between">
-                        <button type="button" className="btn btn-dark" onClick={this.handlePrevClick}> &larr; Previous </button>
-                        <button type="button" className="btn btn-dark" onClick={this.handleNextClick}> Next &rarr; </button>
+                        <button onClick={this.handlePrevClick} disabled={this.state.page < 1} type="button" className="btn btn-dark" > &larr; Previous </button>
+                        <button onClick={this.handleNextClick} disabled={this.state.page > ((this.state.totalResults) / 11)} type="button" className="btn btn-dark"> Next &rarr; </button>
                     </div>
                 </div>
             </>
