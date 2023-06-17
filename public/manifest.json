@@ -1,1 +1,20 @@
-{"name":"","Lakshay Charming Develope@xxx.xxx":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+    "name": "",
+    "Lakshay Charming Develope@xxx.xxx": "",
+    "description": "Bumblebee, the legendary Autobot from the Transformers franchise, is a beloved and iconic character known for his unwavering bravery, unwavering loyalty, and vibrant personality. With his charming yellow exterior and endearing innocence, Bumblebee has captured the hearts of fans worldwide.",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import logo from './logo.png'
 
 export default class NavBar extends Component {
     render() {
@@ -6,7 +7,7 @@ export default class NavBar extends Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
-                        <img className="navbar-brand " style={{ width: '2rem' }} alt='Not Found' src="./favicon.ico" />
+                        <img className="navbar-brand " style={{ width: '2rem' }} alt='Not Found' src={logo} />
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>

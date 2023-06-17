@@ -4,7 +4,8 @@ import NavBar from './components/NavBar'
 import News from './components/News'
 export default class App extends Component {
   render() {
-    document.body.style.backgroundColor = '#534750'
+    document.body.style.backgroundColor = 'rgb(133, 110, 124)'
+    document.body.style.fontFamily = 'Montserrat'
     return (
       <>
         <NavBar />
