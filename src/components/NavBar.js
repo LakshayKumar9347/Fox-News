@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.png'
+import { Link } from 'react-router-dom'
 
 export default class NavBar extends Component {
     render() {
@@ -14,16 +15,16 @@ export default class NavBar extends Component {
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">HOME</a>
+                  <Link className="nav-link active" aria-current="page"  to='/'>HOME</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/">ABOUT</a>
+                    <Link className="nav-link" to='/about'>ABOUT</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/">CREDITS</a>
+                    <Link className="nav-link" to='/credits'>CREDITS</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/">CONTACT</a>
+                    <Link className="nav-link" to='/contact'>CONTACT</Link>
                 </li>
             </ul>
         </div>
@@ -35,11 +36,11 @@ export default class NavBar extends Component {
             CATEGORY
         </button>
         <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">BUSINESS</a></li>
-            <li><a className="dropdown-item" href="#">ENTERTAINMENT</a></li>
-            <li><a className="dropdown-item" href="#">SCIENCE</a></li>
-            <li><a className="dropdown-item" href="#">SPORTS</a></li>
-            <li><a className="dropdown-item" href="#">TECHNOLOGY</a></li>
+            <li><a className="dropdown-item" href="/">BUSINESS</a></li>
+            <li><a className="dropdown-item" href="/">ENTERTAINMENT</a></li>
+            <li><a className="dropdown-item" href="/">SCIENCE</a></li>
+            <li><a className="dropdown-item" href="/">SPORTS</a></li>
+            <li><a className="dropdown-item" href="/">TECHNOLOGY</a></li>
         </ul>
     </div>
 </nav>
