@@ -15,9 +15,9 @@ export default class News extends Component {
         }
     }
     //todo  Code to fetch Api from server
-    async fetchDataFromApi(number) {
+    async fetchDataFromApi(category,number) {
         try {
-            let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${number}&pagesize=7`
+            let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category?category:''}&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${number?number:1}&pagesize=7`
             this.setState({ loading: true })
             let data = await fetch(url)
             let parsedData = await data.json()
@@ -32,20 +32,23 @@ export default class News extends Component {
     }   
     componentDidMount = () => {
         let page = this.state.page
-        this.fetchDataFromApi(page)
+        this.fetchDataFromApi("",page)
         console.log("Component Is Mounted🤍")
     }
-    handlePrevClick = async () => {
+    handlePrevClick =() => {
         console.log("Previous Button Clicked👆🏻")
         this.setState({ page: this.state.page - 1 })
         let pageIncrement = this.state.page - 1
-        this.fetchDataFromApi(pageIncrement)
+        this.fetchDataFromApi("",pageIncrement)
     }
     handleNextClick = async () => {
         console.log("Next Button Clicked👆🏻")
         this.setState({ page: this.state.page + 1 })
         let pageIncrement = this.state.page + 1
-        this.fetchDataFromApi(pageIncrement)
+        this.fetchDataFromApi("",pageIncrement)
+    }
+    handleCategorySports=()=>{
+        this.fetchDataFromApi("sports",1)
     }
     render() {
         return (
