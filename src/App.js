@@ -16,17 +16,17 @@ export default class App extends Component {
   }
   captureCategory = (id) => {
     console.log(id)
-    this.setState({category:id})
+    this.setState({ category: id })
   };
   render() {
-    console.log("This is Current Category Value",this.state.category);
+    console.log("This is Current Category Value", this.state.category);
     document.body.style.backgroundColor = 'rgb(133, 110, 124)'
     document.body.style.fontFamily = 'Montserrat'
     return (
       <>
         <NavBar getId={this.captureCategory} />
         <Routes>
-          <Route path='/' element={<News category={this.state.category} />} />
+          <Route path='/' element={<News />} />
           <Route path='/about' element={<About />} />
           <Route path='/credits' element={<Credits />} />
           <Route path='/contact' element={<Contact />} />
