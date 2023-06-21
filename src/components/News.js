@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewItems from './NewsItems'
 import Spinner from './Spinner'
 import './stylesNews.css'
+
 // todo --> code is working fine just my api requeest limit has been succeded 
 export default class News extends Component {// articles = [here will the sampleData.json]
     constructor() {
@@ -52,8 +53,8 @@ export default class News extends Component {// articles = [here will the sample
   <div className="parallax">
     <div className="parallax-content">
     <div className="container row" style={{ width: "80%", margin:"auto" }}>
-        <h1 className='text-light  m-3 text-center' style={{ fontFamily: 'Montserrat' }}>News Top Headlines</h1>
-        {this.state.loading ? <Spinner /> : undefined}
+        {/* <h1 className='text-light  m-3 text-center' style={{ fontFamily: 'Montserrat' }}>News Top Headlines</h1> */}
+        {this.state.loading ?  <Spinner /> : undefined}
         {!this.state.loading && this.state.articles.map((e) => {
             return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
                 <NewItems title={e.title ? e.title.substring(0, 70) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus "} description={e.description ? e.description.substring(0, 140) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laborum reiciendis expedita est assumenda vitae. Rerum sint labore "} urlToImage={e.urlToImage ? e.urlToImage : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaRw0HJXAFqIU3Oof0GD7YztSNNAKP-uEsYoHCSzDb-a232wqkDWov4lapVXdTBHp9ErA&usqp=CAU"} newsUrl={e.url} />

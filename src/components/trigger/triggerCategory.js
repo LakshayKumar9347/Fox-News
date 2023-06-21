@@ -20,3 +20,4 @@
 //     }
    
 //     export default (first) => {second}
+//todo trying to access the function through export method but i have found react router style to achieve that desired feature

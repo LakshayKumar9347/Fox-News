@@ -15,7 +15,7 @@ export default class NavBar extends Component {
                         <div className="collapse navbar-collapse  justify-content-between" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" to='/'>HOME</Link>
+                                    <Link className="nav-link" aria-current="page" to='/'>HOME</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to='/about'>ABOUT</Link>
@@ -34,9 +34,8 @@ export default class NavBar extends Component {
                                     CATEGORY
                                 </button>
                                 <ul className="dropdown-menu" style={{ cursor: "pointer" }}>
-                                    <Link  to="/general"  className="dropdown-item">GENERAL</Link>
-                                    <Link  to="/health"  className="dropdown-item">HEALTH</Link>
                                     <Link  to="/business"  className="dropdown-item">BUSINESS</Link >
+                                    <Link  to="/health"  className="dropdown-item">HEALTH</Link>
                                     <Link  to="/entertainment"  className="dropdown-item">ENTERTAINMENT</Link>
                                     <Link  to="/science"  className="dropdown-item">SCIENCE</Link>
                                     <Link  to="/sports"  className="dropdown-item">SPORTS</Link>
