@@ -1,0 +1,16 @@
+.parallax {
+    position: relative;
+    background: url('./img.jpg') fixed;
+    /* background: black fixed; */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+  
+  .parallax-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    overflow-y: auto;
+  }
+  

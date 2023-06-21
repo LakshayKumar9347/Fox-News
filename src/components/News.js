@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewItems from './NewsItems'
 import Spinner from './Spinner'
+import './stylesNews.css'
 // todo --> code is working fine just my api requeest limit has been succeded 
 export default class News extends Component {// articles = [here will the sampleData.json]
     constructor() {
@@ -12,7 +13,8 @@ export default class News extends Component {// articles = [here will the sample
             totalResults: 1
         }
     }
-    fetchDataFromApi = async (category, number) => {
+    fetchDataFromApi = async (number) => {
+        let{category}=this.props
         try {
             let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category ? category : ''}&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${number ? number : 1}&pagesize=7`
             this.setState({ loading: true })
@@ -29,26 +31,27 @@ export default class News extends Component {// articles = [here will the sample
     }
     componentDidMount = () => {
         let page = this.state.page
-        console.log('This is component did mount page', page);
-        this.fetchDataFromApi("", page)
+        this.fetchDataFromApi(page)
         console.log("Component Is Mounted🤍")
     }
     handlePrevClick = () => {
         console.log("Previous Button Clicked👆🏻")
         this.setState({ page: this.state.page - 1 })
         let pageIncrement = this.state.page - 1
-        this.fetchDataFromApi("", pageIncrement)
+        this.fetchDataFromApi(pageIncrement)
     }
     handleNextClick = async () => {
         console.log("Next Button Clicked👆🏻")
         this.setState({ page: this.state.page + 1 })
         let pageIncrement = this.state.page + 1
-        this.fetchDataFromApi("", pageIncrement)
+        this.fetchDataFromApi(pageIncrement)
     }
     render() {
         return (
     <>
-    <div className="container row" style={{ width: "80%", margin: "2rem auto auto auto" }}>
+  <div className="parallax">
+    <div className="parallax-content">
+    <div className="container row" style={{ width: "80%", margin:"auto" }}>
         <h1 className='text-light  m-3 text-center' style={{ fontFamily: 'Montserrat' }}>News Top Headlines</h1>
         {this.state.loading ? <Spinner /> : undefined}
         {!this.state.loading && this.state.articles.map((e) => {
@@ -61,6 +64,8 @@ export default class News extends Component {// articles = [here will the sample
             <button onClick={this.handleNextClick} disabled={this.state.page >= Math.ceil((this.state.totalResults) / 7)} type="button" className="btn btn-dark"> Next &rarr; </button>
         </div>
     </div>
+    </div>
+  </div>
     </>
         )
     }

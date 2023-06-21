@@ -1,6 +1,6 @@
 // async fetchDataFromApi(category,number) {
 //     try {
-//         let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category?category:''}&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${number?number:1}&pagesize=7`
+//         let url = ``
 //         this.setState({ loading: true })
 //         let data = await fetch(url)
 //         let parsedData = await data.json()
