@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+*{
+  scroll-behavior: smooth;
+  transition: all 0.3s ease;
+}
 .parallax {
-    position: relative;
-    background: url('./img.jpg') fixed;
-    /* background: black fixed; */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-  }
-  
-  .parallax-content {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    overflow-y: auto;
-    font-family: ro;
-  }
-  
+  position: relative;
+  margin-top: 3rem;
+}
+
+.parallax-content {
+  position: relative;
+  /* height: 80%; */
+  overflow-y: hidden;
+  font-family: Roboto;
+}

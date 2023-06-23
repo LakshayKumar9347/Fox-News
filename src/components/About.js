@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class About extends Component {
   render() {
     return (
-      <div className="container text-light p-4">
-        <h1 className='display-6 fw-bold'>💗About Me💗</h1><br />
+      <div className="container text-light my-5 p-4">
+        <h1 className='display-6 fw-bold'>🔮About Me🔮</h1><br />
         <p >Hi there! My name is Lakshay and I'm a Software Developer with a focus on MERN stack development. I Love building web applications and finding elegant solutions to complex problems. <br /><br />
 
 

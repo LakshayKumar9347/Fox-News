@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Credits extends Component {
   render() {
     return (
-      <div className=" container text-light p-3">
+      <div className=" container text-light my-5 p-3">
         <div className="d-flex">
           <div className="container">
             <h1 className=" fw-bold">🦄Credits🦄</h1>

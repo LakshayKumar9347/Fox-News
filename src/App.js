@@ -9,12 +9,12 @@ import { Routes, Route } from 'react-router-dom'
 export default class App extends Component {
 
   render() {
-    // document.body.style.backgroundImage = "";
+    
     document.body.style.fontFamily = 'Roboto'
     document.body.style.backgroundColor = 'black'
     return (
       <>
-        <NavBar getId={this.captureCategory} />
+        <NavBar />
         <Routes>
           <Route exact path='/' element={<News key="general" category="general" />} />
           <Route exact path='/about' element={<About />} />
