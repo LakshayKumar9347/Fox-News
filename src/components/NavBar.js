@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default class NavBar extends Component {
     render() {
         return (
-            <div style={{position:"fixed",width:"100vw",top:"0",zIndex:"1"}}>
+            <div style={{position:"fixed",width:"100vw",height:"3rem",top:"0",zIndex:"1"}}>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
                         <img className="navbar-brand " style={{ width: '2rem' }} alt='Not Found' src={logo} />
