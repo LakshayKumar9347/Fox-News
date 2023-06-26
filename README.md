@@ -1,3 +1,9 @@
+# refactor,lifecycle,infinite scroll 
+# Ingetgratio of Search Bar to Search News
+Error No News Found
+# Dynamic title changes
+Title Change With Category
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
