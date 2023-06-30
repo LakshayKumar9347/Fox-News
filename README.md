@@ -1,4 +1,4 @@
-# refactor,lifecycle,infinite scroll 
+# refactor,lifecycle -->{mount,update,unmount},infinite scroll 
 # Ingetgratio of Search Bar to Search News
 Error No News Found
 # Dynamic title changes
