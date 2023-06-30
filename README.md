@@ -1,4 +1,6 @@
+<<<<<<< HEAD
 # refactor,lifecycle -->{mount,update,unmount},infinite scroll 
+#s Currently working on it 
 # Ingetgratio of Search Bar to Search News
 Error No News Found
 # Dynamic title changes
