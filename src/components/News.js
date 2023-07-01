@@ -3,6 +3,7 @@ import NewItems from './NewsItems'
 import Spinner from './Spinner'
 import './stylesNews.css'
 // import data from './sampleData.json'
+// integration of environmental variale so that we can able to hide our api key
 
 // ! --> code is working fine just my api requeest limit has been succeded 
 export default class News extends Component {// articles = [here will the sampleData.json]
@@ -40,41 +41,49 @@ export default class News extends Component {// articles = [here will the sample
     componentDidMount = () => {
         let page = this.state.page
         this.fetchDataFromApi(page)
-        console.log("Component Is Mounted🤍")
+       // console.log("Component Is Mounted🤍")
     }
     handlePrevClick = () => {
-        console.log("Previous Button Clicked👆🏻")
+       // console.log("Previous Button Clicked👆🏻")
         this.setState({ page: this.state.page - 1 })
         let pageIncrement = this.state.page - 1
         this.fetchDataFromApi(pageIncrement)
     }
     handleNextClick = async () => {
-        console.log("Next Button Clicked👆🏻")
+        // console.log("Next Button Clicked👆🏻")
         this.setState({ page: this.state.page + 1 })
         let pageIncrement = this.state.page + 1
         this.fetchDataFromApi(pageIncrement)
     }
+     capitalizeFirstLowercaseRest = str => {
+        return (
+          str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+        );
+      };
+      
     render() {
+        let { category } = this.props
         return (
             <>
-            <div className="parallax " >
-<h1 className='text-light p-1 text-align-start' style={{ fontFamily: 'Lucida Sans' }}>News Top Headlines</h1>
-<div className="parallax-content">
-    <div className="container row" style={{ width: "80%",margin:"auto" }} >
-        {this.state.loading ? <Spinner /> : undefined}
-        {!this.state.loading && this.state.articles.map((e) => {
-            return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
-                <NewItems title={e.title ? e.title.substring(0, 70) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus "} description={e.description ? e.description.substring(0, 140) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laborum reiciendis expedita est assumenda vitae. Rerum sint labore "} urlToImage={e.urlToImage ? e.urlToImage : "https://4kwallpapers.com/images/walls/thumbs_3t/9661.jpg"} newsUrl={e.url} date={e.publishedAt} author={e.author} />
-            </div>
-        })}
+<div className="parallax">
+    <div className="parallax-content">
+    <h1 className='text-light my-3 text-center' style={{ fontFamily: 'Lucida Sans',margin:'0.5rem' }}>Top {this.capitalizeFirstLowercaseRest(category)} Headlines</h1>
+        <div className="container row" style={{ width: "100%", margin: "0 auto auto auto" }} >
+            {this.state.loading ? <Spinner /> : undefined}
+            {!this.state.loading && this.state.articles.map((e) => {
+                return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
+                    <NewItems title={e.title ? e.title.substring(0, 70) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus "} description={e.description ? e.description.substring(0, 140) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laborum reiciendis expedita est assumenda vitae. Rerum sint labore "} urlToImage={e.urlToImage ? e.urlToImage : "https://media.zigcdn.com/media/content/2023/Jun/cover_649eab46c4b3c.jpg"} newsUrl={e.url} date={e.publishedAt} author={e.author} source={e.source.name} />
+                </div>
+            })}
+        </div>
+        <div className="container p-2 d-flex justify-content-between">
+            <button onClick={this.handlePrevClick} disabled={this.state.page <= 1} type="button" className="btn btn-light" > &larr; Previous </button>
+            <button onClick={this.handleNextClick} disabled={this.state.page >= Math.ceil((this.state.totalResults) / 7)} type="button" className="btn btn-light"> Next &rarr; </button>
+        </div>
     </div>
-    <div className="container p-2 d-flex justify-content-between">
-        <button onClick={this.handlePrevClick} disabled={this.state.page <= 1} type="button" className="btn btn-light" > &larr; Previous </button>
-        <button onClick={this.handleNextClick} disabled={this.state.page >= Math.ceil((this.state.totalResults) / 7)} type="button" className="btn btn-light"> Next &rarr; </button>
-    </div>
-</div>
 
 </div>
+
             </>
         )
     }

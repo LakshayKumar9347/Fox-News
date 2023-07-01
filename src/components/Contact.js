@@ -4,7 +4,7 @@ export default class Contact extends Component {
   render() {
     return (
       <div className='container d-flex text-light p-3 my-5'>
-        <div className="container w-50 "><img style={{ borderRadius: "10px", width: "70%" }} src={profile} alt="Hello Guys Chia Pilo" /></div>
+        <div className="container w-50 my-5"><img style={{ borderRadius: "10px", width: "70%" }} src={profile} alt="Hello Guys Chia Pilo" /></div>
         <div className="container w-40">
           <h1 className='display-3'>Contact Me</h1>
           <h4>👋 Hi, I'm Lakshay Kumar Kashyap!</h4>

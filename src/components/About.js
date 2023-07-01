@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 export default class About extends Component {
   render() {
+    // document.body.style.backgroundImage = "url('./components/img.jpg')"; 
+    // document.body.style.backgroundColor='pink'
     return (
       <div className="container text-light my-5 p-4">
         <h1 className='display-6 fw-bold'>🔮About Me🔮</h1><br />

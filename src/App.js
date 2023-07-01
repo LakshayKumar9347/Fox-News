@@ -5,14 +5,13 @@ import About from './components/About'
 import Credits from './components/Credits'
 import Contact from './components/Contact'
 import { Routes, Route } from 'react-router-dom'
-
 export default class App extends Component {
 
   render() {
-    
+
     document.body.style.fontFamily = 'Roboto'
-    document.body.style.backgroundColor = 'black'
-    return (
+    document.body.style.backgroundColor='black'
+        return (
       <>
         <NavBar />
         <Routes>
