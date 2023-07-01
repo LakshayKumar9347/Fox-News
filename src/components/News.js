@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewItems from './NewsItems'
 import Spinner from './Spinner'
 import './stylesNews.css'
+import InfiniteScroll from 'react-infinite-scroll-component'
 // import data from './sampleData.json'
 // integration of environmental variale so that we can able to hide our api key
 
