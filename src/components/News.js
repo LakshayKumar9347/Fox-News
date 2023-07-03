@@ -25,7 +25,7 @@ export default class News extends Component {// articles = [here will the sample
             let data = await fetch(url)
             let parsedData = await data.json()
             this.setState({ loading: false })
-            //!code for offline new
+            // !code for offline new
             //     this.setState({
             // let sampleData = data  --> use this line after loading true
             //          articles: sampleData.articles,
@@ -42,10 +42,10 @@ export default class News extends Component {// articles = [here will the sample
     componentDidMount = () => {
         let page = this.state.page
         this.fetchDataFromApi(page)
-       // console.log("Component Is Mounted🤍")
+        console.log("Component Is Mounted🤍")
     }
     handlePrevClick = () => {
-       // console.log("Previous Button Clicked👆🏻")
+        // console.log("Previous Button Clicked👆🏻")
         this.setState({ page: this.state.page - 1 })
         let pageIncrement = this.state.page - 1
         this.fetchDataFromApi(pageIncrement)
@@ -56,38 +56,59 @@ export default class News extends Component {// articles = [here will the sample
         let pageIncrement = this.state.page + 1
         this.fetchDataFromApi(pageIncrement)
     }
-     capitalizeFirstLowercaseRest = str => {
+    capitalizeFirstLowercaseRest = str => {
         return (
-          str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+            str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
         );
-      };
-      
+    };
+    fetchMoreData = async () => {
+        let { category } = this.props
+        this.setState({ page: this.state.page + 1 })
+        let pageIncrement = this.state.page + 1
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category ? category : ''}&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${pageIncrement ? pageIncrement : 1}&pagesize=7`
+        this.setState({ loading: true })
+        let data = await fetch(url)
+        let parsedData = await data.json()
+        this.setState({ loading: false })
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults
+    });
+
     render() {
         let { category } = this.props
         return (
             <>
-<div className="parallax">
-    <div className="parallax-content">
-    <h1 className='text-light my-3 text-center' style={{ fontFamily: 'Lucida Sans',margin:'0.5rem' }}>Top {this.capitalizeFirstLowercaseRest(category)} Headlines</h1>
-        <div className="container row" style={{ width: "100%", margin: "0 auto auto auto" }} >
-            {this.state.loading ? <Spinner /> : undefined}
-            {!this.state.loading && this.state.articles.map((e) => {
-                return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
-                    <NewItems title={e.title ? e.title.substring(0, 70) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus "} description={e.description ? e.description.substring(0, 140) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laborum reiciendis expedita est assumenda vitae. Rerum sint labore "} urlToImage={e.urlToImage ? e.urlToImage : "https://media.zigcdn.com/media/content/2023/Jun/cover_649eab46c4b3c.jpg"} newsUrl={e.url} date={e.publishedAt} author={e.author} source={e.source.name} />
-                </div>
-            })}
-        </div>
-        <div className="container p-2 d-flex justify-content-between">
-            <button onClick={this.handlePrevClick} disabled={this.state.page <= 1} type="button" className="btn btn-light" > &larr; Previous </button>
-            <button onClick={this.handleNextClick} disabled={this.state.page >= Math.ceil((this.state.totalResults) / 7)} type="button" className="btn btn-light"> Next &rarr; </button>
-        </div>
-    </div>
+                <div className="parallax">
+                    <div className="parallax-content">
+                        <h1 className='text-light my-3 text-center' style={{ fontFamily: 'Lucida Sans', margin: '0.5rem' }}>Top {this.capitalizeFirstLowercaseRest(category)} Headlines</h1>
 
-</div>
+                        <InfiniteScroll
+                            dataLength={this.state.articles.length}
+                            next={this.fetchMoreData}
+                            hasMore={this.state.articles.length !== this.state.totalResults}
+                            loader={<Spinner />}
+                        >
+                            <div className=" row" style={{ width: "100%", margin: "0 auto auto auto" }} >
+                                {this.state.loading ? <Spinner /> : undefined}
+                                {!this.state.loading && this.state.articles.map((e) => {
+                                    return <div className="col-lg-4 col-md-6 p-3" key={e.url} >
+                                        <NewItems title={e.title ? e.title.substring(0, 70) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus "} description={e.description ? e.description.substring(0, 140) : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laborum reiciendis expedita est assumenda vitae. Rerum sint labore "} urlToImage={e.urlToImage ? e.urlToImage : "https://media.zigcdn.com/media/content/2023/Jun/cover_649eab46c4b3c.jpg"} newsUrl={e.url} date={e.publishedAt} author={e.author} source={e.source.name} />
+                                    </div>
+                                })}
+                            </div>
+                        </InfiniteScroll>
+                        {/* 
+                        <div className="container p-2 d-flex justify-content-between">
+                            <button onClick={this.handlePrevClick} disabled={this.state.page <= 1} type="button" className="btn btn-light" > &larr; Previous </button>
+                            <button onClick={this.handleNextClick} disabled={this.state.page >= Math.ceil((this.state.totalResults) / 7)} type="button" className="btn btn-light"> Next &rarr; </button>
+                        </div> */}
+                    </div>
+
+                </div>
 
             </>
         )
     }
 }
-
-
+}
