@@ -61,19 +61,19 @@ export default class News extends Component {// articles = [here will the sample
             str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
         );
     };
-    fetchMoreData = async () => {
-        let { category } = this.props
-        this.setState({ page: this.state.page + 1 })
-        let pageIncrement = this.state.page + 1
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category ? category : ''}&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${pageIncrement ? pageIncrement : 1}&pagesize=7`
-        this.setState({ loading: true })
-        let data = await fetch(url)
-        let parsedData = await data.json()
-        this.setState({ loading: false })
-        this.setState({
-            articles: parsedData.articles,
-            totalResults: parsedData.totalResults
-    });
+    // fetchMoreData = async () => {
+    //     let { category } = this.props
+    //     this.setState({ page: this.state.page + 1 })
+    //     let pageIncrement = this.state.page + 1
+    //     let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category ? category : ''}&apiKey=dd30967d1d854b799d75da5a94a311c2&page=${pageIncrement ? pageIncrement : 1}&pagesize=7`
+    //     this.setState({ loading: true })
+    //     let data = await fetch(url)
+    //     let parsedData = await data.json()
+    //     this.setState({ loading: false })
+    //     this.setState({
+    //         articles: parsedData.articles,
+    //         totalResults: parsedData.totalResults
+    // });
 
     render() {
         let { category } = this.props
@@ -83,12 +83,12 @@ export default class News extends Component {// articles = [here will the sample
                     <div className="parallax-content">
                         <h1 className='text-light my-3 text-center' style={{ fontFamily: 'Lucida Sans', margin: '0.5rem' }}>Top {this.capitalizeFirstLowercaseRest(category)} Headlines</h1>
 
-                        <InfiniteScroll
+                        {/* <InfiniteScroll
                             dataLength={this.state.articles.length}
                             next={this.fetchMoreData}
                             hasMore={this.state.articles.length !== this.state.totalResults}
                             loader={<Spinner />}
-                        >
+                        > */}
                             <div className=" row" style={{ width: "100%", margin: "0 auto auto auto" }} >
                                 {this.state.loading ? <Spinner /> : undefined}
                                 {!this.state.loading && this.state.articles.map((e) => {
@@ -97,7 +97,7 @@ export default class News extends Component {// articles = [here will the sample
                                     </div>
                                 })}
                             </div>
-                        </InfiniteScroll>
+                        {/* </InfiniteScroll> */}
                         {/* 
                         <div className="container p-2 d-flex justify-content-between">
                             <button onClick={this.handlePrevClick} disabled={this.state.page <= 1} type="button" className="btn btn-light" > &larr; Previous </button>
@@ -110,5 +110,4 @@ export default class News extends Component {// articles = [here will the sample
             </>
         )
     }
-}
 }
